@@ -1,0 +1,198 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class ActionForIllustration {
+-name:String
+-frame:JFrame
++ActionForIllustration(String name, JFrame frame)
++actionPerformed(ActionEvent e)
+}
+
+class ActionBackToStartPage {
+-frame: JFrame
++ActionBackToStartPage(JFrame frame)
++actionPerformed(ActionEvent e)
+}
+
+class ActionStartGame {
+-frame: JFrame
++ActionStartGame(JFrame frame)
++actionPerformed(ActionEvent e)
+}
+
+enum Illustrations {
+Parrot
+Chicken
+}
+
+class Rasckraska {
++main(String[] args)
+}
+class ChoosingIllustrations {
++ChoosingIllustrations()
+}
+
+class ActionExit {
++actionPerformed(ActionEvent e)
+}
+class StartPage {
++StartPage()
+}
+Rasckraska <-- StartPage
+StartPage *-- ActionStartGame
+StartPage *-- ActionExit
+StartPage <-- ChoosingIllustrations
+ChoosingIllustrations <-- Illustrations
+ChoosingIllustrations *-- ActionForIllustration
+ChoosingIllustrations *-- ActionBackToStartPage
+
+class Action {
+-pairList: List<Map.Entry<Cell, Colour[]>>
++addAction(Cell cell, Colour last_colour, Colour new_colour)
++removeLastAction()
++removeAllAction()
+}
+
+class ActionClearField {
+-action: Action;
++ActionClearField(Action action);
++actionPerformed(ActionEvent e);
+}
+
+class ActionExitToStartPage {
+-frame: JFrame
++ActionExitToStartPage(JFrame frame)
++actionPerformed(ActionEvent e)
+}
+
+class ActionUndo {
+-action: Action
++ActionUndo(Action action)
++actionPerformed(ActionEvent e)
+}
+
+enum AllColours {
+BLACK
+YELLOW
+RED
+GREEN
+BLUE
+WHITE
+BROWN
+LIGHT_BLUE
+LIGHT_YELLOW
+-rgb: int[]
+-name: String
++AllColours(int[] rgb, String name)
++getRgb()
++getName()
+}
+
+class Cell {
+-colour: Colour
+-number: int
++Cell(int number, Palette palette)
++setColour(Colour colour)
++getNumber()
++getColour()
+}
+
+class Chicken {
+-name: String
+-width: String
+-positionOfColors: String
+-colors: ArrayList<AllColours>
++Chicken()
++getWidth()
++getColors()
+}
+
+class ActionChoiceColour {
+-colour: Colour
+-palette: Palette
+-infoLabel: JLabel
++ActionChoiceColour(Colour colour, Palette palette, JLabel infoLabel)
++actionPerformed(ActionEvent e)
+}
+
+class ColoringCell {
+-cell: Cell
+-palette: Palette
+-action: Action
++ColoringCell(Cell cell, Palette palette, Action action)
++actionPerformed(ActionEvent e)
+}
+
+class Colour {
+-color: Color
+-number: int
+-name: String
+-isSelected: boolean
+-rgb: int[]
++Colour(AllColours baseColour, int number)
++Colour(int number, Palette palette)
++getColour()
++setSelected(boolean isSelected)
++getName()
++isSelected()
+}
+
+interface Consts {
+NUMBER_OF_COLORS: int
+WIDTH_FIELD: int
+}
+
+class GameField {
++GameField(String selectedIllustration)
+}
+
+class Illustration {
+-name: String
+-positionOfColors: String
+-colours: ArrayList<AllColours>
+width: int
++readFile(String name)
++getPositionOfColors()
++getColors()
++getWidth()
+}
+
+class Palette {
+-colours: ArrayList<Colour>
++Palette()
++addColour(Colour colour)
++getColours()
+}
+
+class Parrot {
+name: String
+width: int
+positionOfColors: String
+colors: ArrayList<AllColours>
+}
+ActionForIllustration <.. GameField
+GameField o-- Illustration
+GameField *-- ActionUndo
+GameField *-- ActionExitToStartPage
+GameField *-- ActionClearField
+Action o-- ActionClearField
+Action o-- ActionUndo
+GameField *-- Palette
+GameField o-- Action
+GameField *-- ActionChoiceColour
+GameField <-- Consts
+ActionChoiceColour o-- Colour
+ActionChoiceColour o-- Palette
+GameField *-- ColoringCell
+Cell o-- ColoringCell
+Palette o-- ColoringCell
+Action o-- ColoringCell
+Colour <.. Palette
+Cell <.. Colour
+Cell <.. Action
+Colour <.. Action
+Illustration <|-- Chicken
+Illustration <|-- Parrot
+AllColours <-- Parrot
+AllColours <-- Chicken
+@enduml
