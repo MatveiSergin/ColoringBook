@@ -1,4 +1,4 @@
-package ColoringBook.StartPage;
+package ColoringBook.StartPage.ActionsForButtons;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

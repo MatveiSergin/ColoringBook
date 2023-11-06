@@ -1,4 +1,8 @@
-package ColoringBook.GameField;
+package ColoringBook.GameField.ActionsForButtons;
+
+import ColoringBook.GameField.Action;
+import ColoringBook.GameField.Colour;
+import ColoringBook.GameField.Palette;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -9,7 +13,7 @@ public class ActionChoiceColour implements ActionListener {
     private Colour colour;
     private Palette palette;
     private JLabel infoLabel;
-    private Action action;
+    private ColoringBook.GameField.Action action;
     public ActionChoiceColour(Colour colour, Palette palette, JLabel infoLabel, Action action) {
         this.colour = colour;
         this.palette = palette;

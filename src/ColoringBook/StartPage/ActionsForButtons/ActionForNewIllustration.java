@@ -1,20 +1,25 @@
-package ColoringBook.StartPage;
+package ColoringBook.StartPage.ActionsForButtons;
+
+import ColoringBook.GameField.GameField;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class ActionStartGame implements ActionListener {
+public class ActionForNewIllustration implements ActionListener {
+    private String name;
     private JFrame frame;
-    public ActionStartGame(JFrame frame) {
+    public ActionForNewIllustration(String name, JFrame frame) {
+        this.name = name;
         this.frame = frame;
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        frame.dispose();
         try {
-            ChoosingIllustrations choosingIllustrations = new ChoosingIllustrations();
+            frame.dispose();
+            GameField gameField = new GameField(name);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

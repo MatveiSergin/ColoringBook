@@ -1,18 +1,17 @@
-package ColoringBook.GameField;
+package ColoringBook.StartPage.ActionsForButtons;
 
 import ColoringBook.StartPage.StartPage;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class ActionExitToStartPage implements ActionListener {
-
+public class ActionBackToStartPage implements ActionListener {
     private JFrame frame;
-    public ActionExitToStartPage(JFrame frame) {
+    public ActionBackToStartPage(JFrame frame) {
         this.frame = frame;
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         frame.dispose();

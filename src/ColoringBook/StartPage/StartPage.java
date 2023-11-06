@@ -1,5 +1,8 @@
 package ColoringBook.StartPage;
 
+import ColoringBook.StartPage.ActionsForButtons.ActionExit;
+import ColoringBook.StartPage.ActionsForButtons.ActionStartGame;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -8,9 +11,16 @@ import java.io.IOException;
 
 public class StartPage extends JFrame {
     public StartPage() throws IOException {
-        super("Menu");;
+        super("Menu");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(350, 700);
+        setBackground(Color.white);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        FillStartPage();
+    }
+
+    private void FillStartPage() throws IOException  {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
@@ -50,9 +60,5 @@ public class StartPage extends JFrame {
         add(background, BorderLayout.SOUTH);
         add(name, BorderLayout.NORTH);
         add(panel, BorderLayout.CENTER);
-
-        setBackground(Color.white);
-        setLocationRelativeTo(null);
-        setVisible(true);
     }
 }

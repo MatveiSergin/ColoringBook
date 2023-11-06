@@ -23,7 +23,7 @@ public class Colour extends JButton {
     }
 
     Colour(int number, Palette palette) {
-        this.rgb = palette.getColours().get(number).getRgb();
+        this.rgb = palette.getColours().get(number - 1).getRgb();
         this.number = number;
         getColour();
     }

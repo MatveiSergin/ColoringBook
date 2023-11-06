@@ -1,21 +1,29 @@
 package ColoringBook.GameField;
 
+import ColoringBook.Database.DbConnect;
+import ColoringBook.Database.RequestToDatabase;
+
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Map;
 
-public class Illustration {
+public abstract class Illustration {
     private String name;
     private String positionOfColors;
     private ArrayList<AllColours> colors;
     private int width;
 
-    public void readFile(String name) throws IOException {
-        String src = "C:\\workspace\\mai\\235\\23\\Kursach\\src\\ColoringBook\\Templates\\" + name + ".txt";
-        FileInputStream fstream = new FileInputStream(src);
-        DataInputStream in = new DataInputStream(fstream);
-        BufferedReader br = new BufferedReader(new InputStreamReader(in));
-        String result = br.readLine();
-        this.positionOfColors = result;
+    public Illustration(String name, ArrayList<AllColours> colors, int width) {
+        this.name = name;
+        this.colors = colors;
+        this.width = width;
+        setPositionOfColors();
+    }
+
+    private void setPositionOfColors() {
+        RequestToDatabase requestToDatabase = new RequestToDatabase();
+        Map<String, String> templates = requestToDatabase.getTemplatesForColoringBook();
+        positionOfColors = templates.get(name);
     }
     public String getPositionOfColors() {
         return positionOfColors;
@@ -26,5 +34,8 @@ public class Illustration {
 
     public int getWidth() {
         return width;
+    }
+    public String getName() {
+        return name;
     }
 }

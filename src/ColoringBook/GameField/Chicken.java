@@ -17,16 +17,14 @@ public class Chicken extends Illustration {
             AllColours.BROWN
     ));
 
-    public Chicken() throws IOException {
-        readFile(name);
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    @Override
-    public ArrayList<AllColours> getColors() {
-        return colors;
+    public Chicken() {
+        super("Chicken",
+                new ArrayList<>(Arrays.asList(
+                        AllColours.WHITE,
+                        AllColours.YELLOW,
+                        AllColours.RED,
+                        AllColours.BLACK,
+                        AllColours.BROWN
+                )), 15);
     }
 }

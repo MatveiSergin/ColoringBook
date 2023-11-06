@@ -1,73 +1,107 @@
 package ColoringBook.GameField;
 
+import ColoringBook.GameField.ActionsForButtons.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GameField extends JFrame {
+    private Illustration illustration;
+    private int width;
+    private Action action;
+    private JLabel progressLabel = new JLabel("Progress: 0%");
+    private JLabel selectedColorLabel = new JLabel("Selected color: ");
+    public GameField(String illustration) throws IOException {
+        super("Coloring by numbers");
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setSize(900, 750);
+        setLocationRelativeTo(null);
+        setVisible(true);
 
-    public GameField(String selectedIllustration) throws IOException {
+        chooseIllustration(illustration);
+        action = new Action(this.illustration);
+        addWindowListener(new ClosingGameField(this, action));
+        fillGameField();
+    }
+
+    public GameField(String illustration, String positionOfColors) throws IOException {
         super("Coloring by numbers");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(900, 750);
+        setLocationRelativeTo(null);
+        setVisible(true);
 
-        Illustration illustration = null;
-        int width = 0;
-
-        if (selectedIllustration.equals("Parrot")) {
-            illustration = new Parrot();
-            width = illustration.getWidth();
+        chooseIllustration(illustration);
+        action = new Action(this.illustration, positionOfColors);
+        addWindowListener(new ClosingGameField(this, action));
+        fillGameField();
+    }
+    private void chooseIllustration(String illustration) throws IOException {
+        switch (illustration) {
+            case ("Parrot"):
+                this.illustration = new Parrot();
+                width = this.illustration.getWidth();
+                break;
+            case ("Chicken"):
+                this.illustration = new Chicken();
+                width = this.illustration.getWidth();
+                break;
         }
-        else if (selectedIllustration.equals("Chicken")) {
-            illustration = new Chicken();
-            width = illustration.getWidth();
-        }
+    }
+    private void fillGameField() {
+        Palette palette = addPaletteOnGameField();
+        JPanel fieldPanel = addCellsOnGameField(palette);
+        JPanel actionsPanel = addActionsPanelOnGameField();
 
-        JLabel progressLabel = new JLabel("Progress: 0%");
-        Action action = new Action(illustration);
         JSplitPane panel = new JSplitPane();
-        JPanel fieldPanel = new JPanel(new GridLayout(width, width));
-        JPanel actionsPanel = new JPanel(new FlowLayout());
-
-        JButton undo = new JButton("Undo");
-        undo.addActionListener(new ActionUndo(action, progressLabel));
-
-        JButton exitToStartPage = new JButton("Exit to menu");
-        exitToStartPage.addActionListener(new ActionExitToStartPage(this));
-
-        JButton clearField = new JButton("All clear");
-        clearField.addActionListener(new ActionClearField(action, progressLabel));
-
-        JLabel selectedColorLabel = new JLabel("Selected color: ");
-        actionsPanel.add(progressLabel, BorderLayout.WEST);
-        actionsPanel.add(undo);
-        actionsPanel.add(clearField);
-        actionsPanel.add(exitToStartPage);
-        actionsPanel.add(selectedColorLabel, BorderLayout.EAST);
-
+        add(actionsPanel, BorderLayout.NORTH);
+        panel.setRightComponent(palette);
+        panel.setLeftComponent(fieldPanel);
+        add(panel);
+    }
+    private Palette addPaletteOnGameField() {
         Palette palette = new Palette();
-        ArrayList<AllColours> colorsForIllustration= illustration.getColors();
+        ArrayList<AllColours> colorsForIllustration= this.illustration.getColors();
 
         for (int i = 0; i < colorsForIllustration.size(); i++) {
             Colour colour = new Colour(colorsForIllustration.get(i), i + 1);
             colour.addActionListener(new ActionChoiceColour(colour, palette, selectedColorLabel, action));
             palette.addColour(colour);
         }
+        return palette;
+    }
+    private JPanel addCellsOnGameField(Palette palette) {
+        JPanel fieldPanel = new JPanel(new GridLayout(width, width));
+        String numbers = this.illustration.getPositionOfColors();
+        List<Integer> currentResult = action.getCurrentResult();
 
-        String numbers = illustration.getPositionOfColors();
-        for (int i = 0; i < illustration.getWidth() * illustration.getWidth(); i++) {
-            Cell cell = new Cell(Integer.parseInt(String.valueOf(numbers.charAt(i))), i, palette);
+        for (int i = 0; i < this.illustration.getWidth() * this.illustration.getWidth(); i++) {
+            Cell cell = new Cell(currentResult.get(i), Character.getNumericValue(numbers.charAt(i)), i, palette);
             cell.addActionListener(new ColoringCell(cell, palette, action, progressLabel));
             fieldPanel.add(cell);
         }
+        return fieldPanel;
+    }
+    private JPanel addActionsPanelOnGameField() {
+        JPanel actionsPanel = new JPanel(new FlowLayout());
 
-        add(actionsPanel, BorderLayout.NORTH);
-        panel.setRightComponent(palette);
-        panel.setLeftComponent(fieldPanel);
-        add(panel);
+        JButton undo = new JButton("Undo");
+        undo.addActionListener(new ActionUndo(action, progressLabel));
 
-        setLocationRelativeTo(null);
-        setVisible(true);
+        JButton exitToStartPage = new JButton("Exit to menu");
+        exitToStartPage.addActionListener(new ActionExitToStartPage(this, action));
+
+        JButton clearField = new JButton("All clear");
+        clearField.addActionListener(new ActionClearField(action, progressLabel));
+
+        actionsPanel.add(progressLabel, BorderLayout.WEST);
+        actionsPanel.add(undo);
+        actionsPanel.add(clearField);
+        actionsPanel.add(exitToStartPage);
+        actionsPanel.add(selectedColorLabel, BorderLayout.EAST);
+        return actionsPanel;
     }
 }

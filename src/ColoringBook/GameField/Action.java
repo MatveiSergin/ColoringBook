@@ -14,9 +14,25 @@ public class Action {
         for (int i = 0; i < illustration.getWidth() * illustration.getWidth(); i++) {
             currentResult.add(1);
         }
-
         int counter = 0;
         String positionOfColors = illustration.getPositionOfColors();
+
+        for (int i = 0; i < positionOfColors.length(); i++) {
+            if (positionOfColors.charAt(i) == '1') {
+                counter += 1;
+            }
+        }
+        this.quantityWhiteCells = counter;
+
+        this.progress = calculateProgress();
+    }
+    public Action(Illustration illustration, String positionOfColors) {
+        this.illustration = illustration;
+        for (int i = 0; i < illustration.getWidth() * illustration.getWidth(); i++) {
+            currentResult.add(Character.getNumericValue(positionOfColors.charAt(i)));
+        }
+        int counter = 0;
+
         for (int i = 0; i < positionOfColors.length(); i++) {
             if (positionOfColors.charAt(i) == '1') {
                 counter += 1;
@@ -75,7 +91,23 @@ public class Action {
         return String.format("%.1f", result);
     }
 
+    public String getPositionOfColors() {
+        String result = "";
+        for (int numberColors :
+                currentResult) {
+            result += Integer.toString(numberColors);
+        }
+        return result;
+    }
     public String getProgress() {
         return progress;
+    }
+
+    public String getNameOfIllustration() {
+        return illustration.getName();
+    }
+
+    public List<Integer> getCurrentResult() {
+        return currentResult;
     }
 }

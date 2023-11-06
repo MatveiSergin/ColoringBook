@@ -9,10 +9,10 @@ public class Cell extends JButton {
     private final int number;
     private final int index;
 
-    public Cell(int number, int index, Palette palette) {
+    public Cell(int numberColor, int number, int index, Palette palette) {
         this.number = number;
         this.index = index;
-        colour = new Colour(0, palette);
+        colour = new Colour(numberColor, palette);
         setText(String.valueOf(number));
         setFont(new Font("Arial",Font.BOLD, 14));
         setBackground(this.colour.getColour());
