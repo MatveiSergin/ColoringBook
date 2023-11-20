@@ -1,32 +1,41 @@
-package ColoringBook.Database;
+package Database;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class RequestToDatabase implements IRequestToDatabase {
+    private final DatabaseForColoringBook databaseForColoringBook = DatabaseForColoringBook.getInstance();
+    private final DatabaseForTemplates databaseForTemplates = DatabaseForTemplates.getInstance();
     public void savePictures(String nameIllustration, String positionOfColors) {
-        DbConnect dbConnect = new DbConnect();
-        int newId = dbConnect.executeCount() + 1;
-        dbConnect.executeInsert(newId, new String[] {nameIllustration, positionOfColors});
+        String sql = """
+                insert into Kursach.ColoringBook
+                (illustration, positionOfColors)
+                values
+                ('%s', '%s')
+                """;
+        databaseForColoringBook.execute(String.format(sql, nameIllustration, positionOfColors));
+        System.out.println();
     }
 
     public String[] getLastPictures() {
-        DbConnect dbConnect = new DbConnect();
-        Map<Integer, String[]> allPictures = dbConnect.executeSelect
-                ("""
-            SELECT * 
-            from ColoringBook
-            """, new String[] {"id", "illustration", "positionOfColors"});
+        String sql = """
+                select *
+                from Kursach.ColoringBook
+                """;
+        Map<Integer, String[]> allPictures = databaseForColoringBook.selectAll(sql, new String[] {"id", "illustration", "positionOfColors"});
+        if (allPictures.size() == 0) {
+            return null;
+        }
         String[] lastPictures = allPictures.get(allPictures.size() - 1).clone();
         return lastPictures;
     }
 
     public Map<String, String> getTemplatesForColoringBook() {
-        DbConnect dbConnect = new DbConnect();
-        Map<Integer, String[]> select = dbConnect.executeSelect("""
-                SELECT * 
+        String sql = """
+                select *
                 from TemplatesForColoringBook
-                """, new String[] {"id", "name", "positionOfColors"});
+                """;
+        Map<Integer, String[]> select = databaseForTemplates.selectAll(sql, new String[] {"id", "name", "positionOfColors"});
         Map<String, String> templates = new HashMap<>();
         for (int i = 0; i < select.size(); i++) {
             templates.put(select.get(i)[1], select.get(i)[2]);

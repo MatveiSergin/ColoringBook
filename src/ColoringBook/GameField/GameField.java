@@ -1,6 +1,6 @@
-package ColoringBook.GameField;
+package GameField;
 
-import ColoringBook.GameField.ActionsForButtons.*;
+import GameField.ActionsForButtons.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,12 +19,12 @@ public class GameField extends JFrame {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setSize(900, 750);
         setLocationRelativeTo(null);
-        setVisible(true);
 
         chooseIllustration(illustration);
         action = new Action(this.illustration);
         addWindowListener(new ClosingGameField(this, action));
         fillGameField();
+        outputFrame();
     }
 
     public GameField(String illustration, String positionOfColors) throws IOException {
@@ -32,14 +32,19 @@ public class GameField extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(900, 750);
         setLocationRelativeTo(null);
-        setVisible(true);
 
         chooseIllustration(illustration);
         action = new Action(this.illustration, positionOfColors);
         addWindowListener(new ClosingGameField(this, action));
         fillGameField();
+        outputFrame();
     }
-    private void chooseIllustration(String illustration) throws IOException {
+
+    public void outputFrame() {
+        setVisible(true);
+    }
+
+    private void chooseIllustration(String illustration) {
         switch (illustration) {
             case ("Parrot"):
                 this.illustration = new Parrot();
@@ -80,7 +85,7 @@ public class GameField extends JFrame {
 
         for (int i = 0; i < this.illustration.getWidth() * this.illustration.getWidth(); i++) {
             Cell cell = new Cell(currentResult.get(i), Character.getNumericValue(numbers.charAt(i)), i, palette);
-            cell.addActionListener(new ColoringCell(cell, palette, action, progressLabel));
+            cell.addActionListener(new ActionColoringCell(cell, palette, action, progressLabel, this));
             fieldPanel.add(cell);
         }
         return fieldPanel;

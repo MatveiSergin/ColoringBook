@@ -1,4 +1,4 @@
-package ColoringBook.StartPage;
+package StartPage;
 
 public enum Illustrations {
     Parrot,

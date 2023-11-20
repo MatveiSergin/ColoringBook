@@ -1,4 +1,4 @@
-package ColoringBook.GameField;
+package GameField;
 
 public enum AllColours {
     BLACK (new int[] {0, 0, 0}, "Black"),

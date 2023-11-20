@@ -1,9 +1,9 @@
-package ColoringBook.StartPage;
+package StartPage;
 
-import ColoringBook.Database.RequestToDatabase;
-import ColoringBook.StartPage.ActionsForButtons.ActionBackToStartPage;
-import ColoringBook.StartPage.ActionsForButtons.ActionForNewIllustration;
-import ColoringBook.StartPage.ActionsForButtons.ActionForOldIllustration;
+import Database.RequestToDatabase;
+import StartPage.ActionsForButtons.ActionBackToStartPage;
+import StartPage.ActionsForButtons.ActionForNewIllustration;
+import StartPage.ActionsForButtons.ActionForOldIllustration;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -18,8 +18,11 @@ public class ChoosingIllustrations extends JFrame {
         setSize(350, 700);
         setBackground(Color.white);
         setLocationRelativeTo(null);
-        setVisible(true);
         FillChoosingIllustrations();
+    }
+
+    public void outputFrame() {
+        setVisible(true);
     }
 
     private void FillChoosingIllustrations() throws IOException {
@@ -80,13 +83,19 @@ public class ChoosingIllustrations extends JFrame {
     private JButton addButtonFromDatabase() {
         RequestToDatabase requestToDatabase = new RequestToDatabase();
         String[] lastPictures = requestToDatabase.getLastPictures();
+
         JButton button = new JButton("<html><h2><font color=\"blue\">" + "Finish the last drawing");
         button.setBorderPainted(false);
         button.setCursor(Cursor.getPredefinedCursor(HAND_CURSOR));
         button.setFocusPainted(false);
         button.setContentAreaFilled(false);
-        button.addActionListener(new ActionForOldIllustration(lastPictures[1], lastPictures[2],  this));
         button.setPreferredSize(new Dimension(350, 50));
+
+        if (lastPictures == null) {
+            return button;
+        }
+
+        button.addActionListener(new ActionForOldIllustration(lastPictures[1], lastPictures[2],  this));
         return button;
     }
 

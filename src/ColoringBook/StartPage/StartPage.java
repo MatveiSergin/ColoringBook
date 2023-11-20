@@ -1,7 +1,7 @@
-package ColoringBook.StartPage;
+package StartPage;
 
-import ColoringBook.StartPage.ActionsForButtons.ActionExit;
-import ColoringBook.StartPage.ActionsForButtons.ActionStartGame;
+import StartPage.ActionsForButtons.ActionExit;
+import StartPage.ActionsForButtons.ActionStartGame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -16,15 +16,18 @@ public class StartPage extends JFrame {
         setSize(350, 700);
         setBackground(Color.white);
         setLocationRelativeTo(null);
-        setVisible(true);
-        FillStartPage();
+        fillStartPage();
     }
 
-    private void FillStartPage() throws IOException  {
+    public void outputFrame() {
+        setVisible(true);
+    }
+
+    private void fillStartPage() throws IOException  {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
-        JLabel background = new JLabel(new ImageIcon(ImageIO.read(new File("src\\ColoringBook\\media\\ver2.png"))));
+        JLabel background = new JLabel(new ImageIcon(ImageIO.read(new File("src\\ColoringBook\\media\\pallete.png"))));
         background.setOpaque(true);
         background.setBackground(Color.WHITE);
 

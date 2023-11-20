@@ -1,9 +1,6 @@
-package ColoringBook.GameField;
+package GameField;
 
-import ColoringBook.Database.DbConnect;
-import ColoringBook.Database.RequestToDatabase;
-
-import java.io.*;
+import Database.RequestToDatabase;
 import java.util.ArrayList;
 import java.util.Map;
 

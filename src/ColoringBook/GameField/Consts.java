@@ -1,4 +1,4 @@
-package ColoringBook.GameField;
+package GameField;
 
 public interface Consts {
 

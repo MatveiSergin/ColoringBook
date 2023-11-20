@@ -1,4 +1,4 @@
-package ColoringBook.GameField;
+package GameField;
 
 import java.util.*;
 
@@ -33,8 +33,8 @@ public class Action {
         }
         int counter = 0;
 
-        for (int i = 0; i < positionOfColors.length(); i++) {
-            if (positionOfColors.charAt(i) == '1') {
+        for (int i = 0; i < illustration.getPositionOfColors().length(); i++) {
+            if (illustration.getPositionOfColors().charAt(i) == '1') {
                 counter += 1;
             }
         }

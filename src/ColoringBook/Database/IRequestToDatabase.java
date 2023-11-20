@@ -1,4 +1,4 @@
-package ColoringBook.Database;
+package Database;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package ColoringBook.GameField;
+package GameField;
 
 import javax.swing.*;
 import java.awt.*;

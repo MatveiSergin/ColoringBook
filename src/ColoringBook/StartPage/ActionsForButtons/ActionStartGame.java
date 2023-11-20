@@ -1,6 +1,6 @@
-package ColoringBook.StartPage.ActionsForButtons;
+package StartPage.ActionsForButtons;
 
-import ColoringBook.StartPage.ChoosingIllustrations;
+import StartPage.ChoosingIllustrations;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,6 +17,7 @@ public class ActionStartGame implements ActionListener {
         frame.dispose();
         try {
             ChoosingIllustrations choosingIllustrations = new ChoosingIllustrations();
+            choosingIllustrations.outputFrame();
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

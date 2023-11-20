@@ -1,21 +1,25 @@
-package ColoringBook.GameField;
+package GameField.ActionsForButtons;
+
+import GameField.*;
+import GameField.Action;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ColoringCell implements ActionListener {
+public class ActionColoringCell implements ActionListener {
 
     private Cell cell;
     private Palette palette;
     private Action action;
     private JLabel progressLabel;
-    public ColoringCell(Cell cell, Palette palette, Action action, JLabel progressLabel) {
+    private JFrame frameWithPictures;
+    public ActionColoringCell(Cell cell, Palette palette, Action action, JLabel progressLabel, JFrame frameWithPictures) {
         this.cell = cell;
         this.palette = palette;
         this.action = action;
         this.progressLabel = progressLabel;
+        this.frameWithPictures = frameWithPictures;
     }
 
     @Override
@@ -26,6 +30,9 @@ public class ColoringCell implements ActionListener {
                 action.addAction(cell, cell.getColour(), colour);
                 progressLabel.setText("Progress: " + action.getProgress() + "%");
                 cell.setColour(colour);
+                if (action.getProgress().equals("100,0")) {
+                    FinishPage finishPage = new FinishPage(frameWithPictures);
+                }
             }
         }
     }

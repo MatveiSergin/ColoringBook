@@ -1,8 +1,8 @@
-package ColoringBook.GameField.ActionsForButtons;
+package GameField.ActionsForButtons;
 
-import ColoringBook.Database.RequestToDatabase;
-import ColoringBook.GameField.Action;
-import ColoringBook.StartPage.StartPage;
+import Database.RequestToDatabase;
+import GameField.Action;
+import StartPage.StartPage;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class ActionForSave implements ActionListener {
-    private ColoringBook.GameField.Action action;
+    private Action action;
     private JFrame frameWithWindowForSave;
     private JFrame frameWithPictures;
 
@@ -28,6 +28,7 @@ public class ActionForSave implements ActionListener {
         frameWithPictures.dispose();
         try {
             StartPage startPage = new StartPage();
+            startPage.outputFrame();
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

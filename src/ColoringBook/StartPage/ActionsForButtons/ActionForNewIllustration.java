@@ -1,6 +1,6 @@
-package ColoringBook.StartPage.ActionsForButtons;
+package StartPage.ActionsForButtons;
 
-import ColoringBook.GameField.GameField;
+import GameField.GameField;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,6 +20,7 @@ public class ActionForNewIllustration implements ActionListener {
         try {
             frame.dispose();
             GameField gameField = new GameField(name);
+            gameField.outputFrame();
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

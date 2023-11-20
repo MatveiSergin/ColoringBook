@@ -1,7 +1,7 @@
-package ColoringBook.GameField;
+package GameField;
 
-import ColoringBook.GameField.ActionsForButtons.ActionForNoSave;
-import ColoringBook.GameField.ActionsForButtons.ActionForSave;
+import GameField.ActionsForButtons.ActionForNoSave;
+import GameField.ActionsForButtons.ActionForSave;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,8 +16,11 @@ public class WindowForSave extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(150, 150);
         setLocationRelativeTo(null);
-        setVisible(true);
         fillWindowForSave();
+    }
+
+    public void outputFrame() {
+        setVisible(true);
     }
 
     public void fillWindowForSave() {

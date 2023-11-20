@@ -1,6 +1,6 @@
-package ColoringBook.StartPage.ActionsForButtons;
+package StartPage.ActionsForButtons;
 
-import ColoringBook.GameField.GameField;
+import GameField.GameField;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

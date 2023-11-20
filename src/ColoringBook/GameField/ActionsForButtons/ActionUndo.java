@@ -1,13 +1,13 @@
-package ColoringBook.GameField.ActionsForButtons;
+package GameField.ActionsForButtons;
 
-import ColoringBook.GameField.Action;
+import GameField.Action;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ActionUndo implements ActionListener {
-    private ColoringBook.GameField.Action action;
+    private Action action;
     private JLabel progressLabel;
 
     public ActionUndo(Action action, JLabel progressLabel) {

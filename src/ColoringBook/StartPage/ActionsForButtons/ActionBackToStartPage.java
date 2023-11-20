@@ -1,6 +1,6 @@
-package ColoringBook.StartPage.ActionsForButtons;
+package StartPage.ActionsForButtons;
 
-import ColoringBook.StartPage.StartPage;
+import StartPage.StartPage;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,6 +17,7 @@ public class ActionBackToStartPage implements ActionListener {
         frame.dispose();
         try {
             StartPage startPage = new StartPage();
+            startPage.outputFrame();
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

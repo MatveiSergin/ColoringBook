@@ -1,4 +1,4 @@
-package ColoringBook.GameField;
+package GameField;
 
 import java.io.IOException;
 import java.util.ArrayList;
