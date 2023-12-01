@@ -9,10 +9,10 @@ import java.awt.*;
 public class WindowForSave extends JFrame {
     private Action action;
     private JFrame frameWithPictures;
-    private final int[] WINDOW_RESOLUTION = new int[]{150, 150};
-    private final String SAVE_A_PICTURE = "Save a picture?";
-    private final String SAVE = "Save";
-    private final String DON_T_SAVE = "don`t save";
+    private static final int[] WINDOW_RESOLUTION = new int[]{150, 150};
+    private static final String SAVE_A_PICTURE = "Save a picture?";
+    private static final String SAVE = "Save";
+    private static final String DON_T_SAVE = "don`t save";
     private static final String SAVE_PICTURES = "Save pictures";
 
     public WindowForSave(JFrame frameWithPictures, Action action) {

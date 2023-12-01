@@ -8,10 +8,10 @@ public class Action {
     private Illustration illustration;
     private int quantityWhiteCells;
     private String progress;
-    private final char ONES = '1';
-    private final String FORMAT_FOR_PROGRESS = "%.1f";
-    private final String EMPTY_STRING = "";
-    private final int FIRST_NUMBER_FOR_FORMULA = 100;
+    private static final char ONES = '1';
+    private static final String FORMAT_FOR_PROGRESS = "%.1f";
+    private static final String EMPTY_STRING = "";
+    private static final int FIRST_NUMBER_FOR_FORMULA = 100;
 
     public Action(Illustration illustration) {
         this.illustration = illustration;

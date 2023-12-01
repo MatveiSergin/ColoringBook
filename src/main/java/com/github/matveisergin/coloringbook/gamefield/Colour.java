@@ -10,9 +10,9 @@ public class Colour extends JButton {
     private String name = null;
     private boolean isSelected = false;
     private int[] rgb;
-    private final String NAME_FONT = "Arial";
-    private final int FONT_SIZE = 14;
-    private final int THIRD_ELEMENT = 2;
+    private static final String NAME_FONT = "Arial";
+    private static final int FONT_SIZE = 14;
+    private static final int THIRD_ELEMENT = 2;
 
     Colour(AllColours baseColour, int number) {
         super(Integer.toString(number));

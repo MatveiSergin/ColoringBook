@@ -14,8 +14,9 @@ public class ActionColoringCell implements ActionListener {
     private Action action;
     private JLabel progressLabel;
     private JFrame frameWithPictures;
-    private final String PROGRESS = "Progress: %s%";
-    private final String WINNER_PROGRESS = "100,0";
+    private static final String PROGRESS = "Progress: ";
+    private static final String WINNER_PROGRESS = "100,0";
+    private static final String SYMBOL_PROCENT = "%";
 
     public ActionColoringCell(Cell cell, Palette palette, Action action, JLabel progressLabel, JFrame frameWithPictures) {
         this.cell = cell;
@@ -31,7 +32,7 @@ public class ActionColoringCell implements ActionListener {
                 palette.getColours()) {
             if (colour.isSelected()) {
                 action.addAction(cell, cell.getColour(), colour);
-                progressLabel.setText(String.format(PROGRESS, action.getProgress()));
+                progressLabel.setText(PROGRESS + action.getProgress() + SYMBOL_PROCENT);
                 cell.setColour(colour);
                 if (action.getProgress().equals(WINNER_PROGRESS)) {
                     FinishPage finishPage = new FinishPage(frameWithPictures);

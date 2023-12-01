@@ -1,6 +1,5 @@
 package com.github.matveisergin.coloringbook.gamefield.button.actions;
 
-import com.github.matveisergin.coloringbook.gamefield.Action;
 import com.github.matveisergin.coloringbook.gamefield.Colour;
 import com.github.matveisergin.coloringbook.gamefield.Palette;
 
@@ -13,7 +12,7 @@ public class ActionChoiceColour implements ActionListener {
     private Colour colour;
     private Palette palette;
     private JLabel infoLabel;
-    private final String SELECTED_COLOR = "Selected color: ";
+    private static final String SELECTED_COLOR = "Selected color: ";
 
     public ActionChoiceColour(Colour colour, Palette palette, JLabel infoLabel) {
         this.colour = colour;

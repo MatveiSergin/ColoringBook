@@ -9,7 +9,8 @@ import java.awt.event.ActionListener;
 public class ActionUndo implements ActionListener {
     private Action action;
     private JLabel progressLabel;
-    private final String PROGRESS = "Progress: %s%";
+    private static final String PROGRESS = "Progress: ";
+    private static final String SYMBOL_PROCENT = "%";
 
     public ActionUndo(Action action, JLabel progressLabel) {
         this.action = action;
@@ -19,6 +20,6 @@ public class ActionUndo implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         action.removeLastAction();
-        progressLabel.setText(String.format(PROGRESS, action.getProgress()));
+        progressLabel.setText((PROGRESS + action.getProgress() + SYMBOL_PROCENT));
     }
 }

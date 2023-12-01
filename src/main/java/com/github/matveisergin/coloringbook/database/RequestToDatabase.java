@@ -5,28 +5,28 @@ import java.util.Map;
 
 public class RequestToDatabase {
 
-    private final String SQL_QUERY_FOR_SAVE_PICTURES = """
+    private static final String SQL_QUERY_FOR_SAVE_PICTURES = """
             insert into Kursach.ColoringBook
             (illustration, positionOfColors)
             values
             ('%s', '%s')
             """;
-    private final String SQL_QUERY_FOR_GET_LAST_PICTURES = """
+    private static final String SQL_QUERY_FOR_GET_LAST_PICTURES = """
             select *
             from Kursach.ColoringBook
             """;
-    private final String SQL_QUERY_FOR_GET_TEMPLATES = """
+    private static final String SQL_QUERY_FOR_GET_TEMPLATES = """
             select *
             from TemplatesForColoringBook
             """;
-    private final String FIRST_COLUMN_FOR_COLORINGBOOK = "id";
-    private final String SECOND_COLUMN_FOR_COLORINGBOOK = "illustration";
-    private final String THIRD_COLUMN_FOR_COLORINGBOOK = "positionOfColors";
-    private final String FIRST_COLUMN_FOR_TEMPLATES = "id";
-    private final String SECOND_COLUMN_FOR_TEMPLATES = "name";
-    private final String THIRD_COLUMN_FOR_TEMPLATES = "positionOfColors";
-    private final int THIRD_ELEMENT = 2;
-    private final DatabaseForColoringBook database = DatabaseForColoringBook.getInstance();
+    private static final String FIRST_COLUMN_FOR_COLORINGBOOK = "id";
+    private static final String SECOND_COLUMN_FOR_COLORINGBOOK = "illustration";
+    private static final String THIRD_COLUMN_FOR_COLORINGBOOK = "positionOfColors";
+    private static final String FIRST_COLUMN_FOR_TEMPLATES = "id";
+    private static final String SECOND_COLUMN_FOR_TEMPLATES = "name";
+    private static final String THIRD_COLUMN_FOR_TEMPLATES = "positionOfColors";
+    private static final int THIRD_ELEMENT = 2;
+    private static final DatabaseForColoringBook database = DatabaseForColoringBook.getInstance();
 
     public void savePictures(String nameIllustration, String positionOfColors) {
         database.execute(String.format(SQL_QUERY_FOR_SAVE_PICTURES, nameIllustration, positionOfColors));

@@ -12,20 +12,20 @@ import java.io.File;
 import java.io.IOException;
 
 public class ChoosingIllustrations extends JFrame {
-    private final int WIDTH2 = 350;
-    private final int HEIGHT2 = 50;
-    private final String FONT_COLOR_BLUE = "<html><h2><font color=\"blue\">";
-    private final String FINISH_THE_LAST_DRAWING = "Finish the last drawing";
-    private final String BACK = "<html><h2><font color=\"black\">Back";
-    private final int TWO = 2;
-    private final String FILE_PATH = "C:\\workspace\\mai\\235\\23\\Kursach\\src\\main\\java\\com\\github\\matveisergin\\coloringbook\\media\\%s.jpg";
+    private static final int WIDTH2 = 350;
+    private static final int HEIGHT2 = 50;
+    private static final String FONT_COLOR_BLUE = "<html><h2><font color=\"blue\">";
+    private static final String FINISH_THE_LAST_DRAWING = "Finish the last drawing";
+    private static final String BACK = "<html><h2><font color=\"black\">Back";
+    private static final int TWO = 2;
+    private static final String FILE_PATH = "C:\\workspace\\mai\\235\\23\\Kursach\\src\\main\\java\\com\\github\\matveisergin\\coloringbook\\media\\%s.jpg";
     private static final String CHOOSING_ILLUSTRATION = "Choosing illustration";
-    private final String CHOOSE_ILLUSTRATION = "Choose illustration";
-    private final int[] WINDOW_RESOLUTION = new int[]{350, 700};
-    private final int FONT_SIZE = 20;
-    private final String FONT_NAME = "Verdana";
-    private final int WIDTH1 = 350;
-    private final int HEIGHT1 = 100;
+    private static final String CHOOSE_ILLUSTRATION = "Choose illustration";
+    private static final int[] WINDOW_RESOLUTION = new int[]{350, 700};
+    private static final int FONT_SIZE = 20;
+    private static final String FONT_NAME = "Verdana";
+    private static final int WIDTH1 = 350;
+    private static final int HEIGHT1 = 100;
 
     public ChoosingIllustrations() throws HeadlessException, IOException {
         super(CHOOSING_ILLUSTRATION);

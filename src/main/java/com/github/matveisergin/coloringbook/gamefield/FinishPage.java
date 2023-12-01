@@ -7,13 +7,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class FinishPage extends JFrame {
-    private final int[] WINDOW_RESOLUTION = new int[]{300, 150};
-    private final String TEXT = "      You are winner!!!!!";
-    private final String EXIT = "Exit";
+    private static final int[] WINDOW_RESOLUTION = new int[]{300, 150};
+    private static final String EXIT = "Exit";
     private static final String MENU = "Menu";
     private static final String WIN = "WIN";
-    private final int FONT_SIZE = 20;
-    private final String FONT_NAME = "Verdana";
+    private static final int FONT_SIZE = 20;
+    private static final String FONT_NAME = "Verdana";
+    private static final String TEXT = "      You are winner!!!!!";
 
     public FinishPage(JFrame frameWithPicture) {
         super(WIN);

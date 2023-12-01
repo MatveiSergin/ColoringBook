@@ -12,15 +12,15 @@ import java.io.IOException;
 public class Startpage extends JFrame {
 
     private static final String MENU = "Menu";
-    private final String FILE_PATH_TO_PICTURE_WITH_PALETTE = "C:\\workspace\\mai\\235\\23\\Kursach\\src\\main\\java\\com\\github\\matveisergin\\coloringbook\\media\\pallete.png";
-    private final String WELCOME = "Welcome to the Coloring book!!";
-    private final int WIDTH1 = 350;
-    private final int HEIGHT1 = 100;
-    private final String START_GAME = "<html><h2><font color=\"blue\">Start game!";
-    private final String EXIT = "<html><h2><font color=\"blue\">Exit";
-    private final int[] WINDOW_RESOLUTION = new int[]{350, 700};
-    private final int FONT_SIZE = 20;
-    private final String FONT_NAME = "Verdana";
+    private static final String FILE_PATH_TO_PICTURE_WITH_PALETTE = "C:\\workspace\\mai\\235\\23\\Kursach\\src\\main\\java\\com\\github\\matveisergin\\coloringbook\\media\\pallete.png";
+    private static final String WELCOME = "Welcome to the Coloring book!!";
+    private static final int WIDTH1 = 350;
+    private static final int HEIGHT1 = 100;
+    private static final String START_GAME = "<html><h2><font color=\"blue\">Start game!";
+    private static final String EXIT = "<html><h2><font color=\"blue\">Exit";
+    private static final int[] WINDOW_RESOLUTION = new int[]{350, 700};
+    private static final int FONT_SIZE = 20;
+    private static final String FONT_NAME = "Verdana";
 
     public Startpage() throws IOException {
         super(MENU);

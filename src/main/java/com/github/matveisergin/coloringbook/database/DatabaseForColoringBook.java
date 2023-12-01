@@ -10,7 +10,7 @@ import java.util.Map;
 public class DatabaseForColoringBook {
 
     private static DatabaseForColoringBook instance;
-    private final DatabaseProperties properties = PropertiesFactory.getProperties();
+    private static final DatabaseProperties properties = PropertiesFactory.getProperties();
     private static final String SQL_QUERY_TO_EXECUTE_COUNT = """
             select count(%s)
             from Kursach.%s

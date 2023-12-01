@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 public class ActionClearField implements ActionListener {
     private Action action;
     private JLabel progressLabel;
-    private final String PROGRESS = "Progress: ";
-    private final String SYMBOL_PROCENT = "%";
+    private static final String PROGRESS = "Progress: ";
+    private static final String SYMBOL_PROCENT = "%";
 
     public ActionClearField(Action action, JLabel progressLabel) {
         this.action = action;

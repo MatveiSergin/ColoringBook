@@ -6,6 +6,8 @@ import java.io.InputStream;
 public final class PropertiesFactory {
 
     private static DatabaseProperties properties;
+    private static final String FILE_PROPERTIES_NAME = "application.properties";
+    private static final int STATUS = -1;
 
     private PropertiesFactory() {
     }
@@ -18,7 +20,7 @@ public final class PropertiesFactory {
     }
 
     private static void init() {
-        String filePropertiesName = "application.properties";
+        String filePropertiesName = FILE_PROPERTIES_NAME;
 
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         properties = new DatabaseProperties();
@@ -26,7 +28,7 @@ public final class PropertiesFactory {
             properties.load(stream);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
-            System.exit(-1);
+            System.exit(STATUS);
         }
     }
 }
