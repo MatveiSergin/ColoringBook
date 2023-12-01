@@ -10,10 +10,10 @@ public class CellTest {
     private Cell cell;
     private Illustration illustration = new Parrot();
     private Palette palette = new Palette();
-    private int EXPECTED_INDEX = 7;
-    private int EXPECTED_NUMBER = 3;
-    private String EXPECTED_NAME_FOR_COLOUR = "White";
-    private Color EXPECTED_COLOR = Color.red;
+    private static final int EXPECTED_INDEX = 7;
+    private static final int EXPECTED_NUMBER = 3;
+    private static final String EXPECTED_NAME_FOR_COLOUR = "White";
+    private static final Color EXPECTED_COLOR = Color.red;
 
     @BeforeEach
     void createCell() {

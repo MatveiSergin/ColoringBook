@@ -9,10 +9,10 @@ import java.util.*;
 public class ActionTest {
     private Action testAction;
     private Illustration illustration = new Parrot();
-    private String EXPECTED_PROGRESS_DURING_INIT = "0,0";
-    private int EXPECTED_QUANTITY_ONES = 225;
-    private int EXPECTED_SIZE = 1;
-    private String EXPECTED_PROGRESS = "1,3";
+    private static final String EXPECTED_PROGRESS_DURING_INIT = "0,0";
+    private static final int EXPECTED_QUANTITY_ONES = 225;
+    private static final int EXPECTED_SIZE = 1;
+    private static final String EXPECTED_PROGRESS = "1,3";
 
     @BeforeEach
     void initAction() {

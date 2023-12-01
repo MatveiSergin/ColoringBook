@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class PaletteTest {
 
     private Palette palette;
-    private int EXPECTED_SIZE = 2;
+    private static final int EXPECTED_SIZE = 2;
 
     @BeforeEach
     void createPalette() {
