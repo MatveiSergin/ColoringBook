@@ -33,10 +33,8 @@ public class DatabaseForColoringBookTest {
     @Test
     void testGetInstanceMethods() {
         DatabaseForColoringBook db2 = DatabaseForColoringBook.getInstance();
-
         Assertions.assertNotNull(testDb);
         Assertions.assertNotNull(db2);
-
         Assertions.assertEquals(testDb, db2);
     }
 
@@ -48,20 +46,15 @@ public class DatabaseForColoringBookTest {
         for (int i = 0; i < result.size(); i++) {
             Assertions.assertArrayEquals(EXPECTED_RESULT.get(i), result.get(i));
         }
-
-
     }
 
     @Test
     void testExecuteCountMethod()  {
-        int firstResult = testDb.executeCount("id", "TemplatesForColoringBook");
+        int firstResult = testDb.executeCount(COLUMNS[0], TABLES_NAME_FOR_TEMPLATES);
         Assertions.assertEquals(EXPECTED_COUNT, firstResult);
-
         testDb.execute(QUERY_INSERT_TUPLE_FOR_TEMPLATES);
-        int secondResult = testDb.executeCount("id", "TemplatesForColoringBook");
+        int secondResult = testDb.executeCount(COLUMNS[0], TABLES_NAME_FOR_TEMPLATES);
         Assertions.assertEquals(EXPECTED_COUNT + 1, secondResult);
         testDb.executeDeleteLastTuple(TABLES_NAME_FOR_TEMPLATES);
     }
-
-
 }

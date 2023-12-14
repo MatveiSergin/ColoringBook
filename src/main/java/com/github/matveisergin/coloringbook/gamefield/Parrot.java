@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Parrot extends Illustration {
-
     private static final int WIDTH = 15;
 
     public Parrot() {

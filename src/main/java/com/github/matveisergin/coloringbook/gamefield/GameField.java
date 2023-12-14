@@ -34,7 +34,6 @@ public class GameField extends JFrame {
         action = new Action(this.illustration);
         addWindowListener(new ClosingGameField(this, action));
         fillGameField();
-        outputFrame();
     }
 
     public GameField(String illustration, String positionOfColors) throws IOException {

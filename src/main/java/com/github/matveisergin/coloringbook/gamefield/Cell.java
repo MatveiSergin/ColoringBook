@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Cell extends JButton {
-
     private Colour colour;
     private final int number;
     private final int index;

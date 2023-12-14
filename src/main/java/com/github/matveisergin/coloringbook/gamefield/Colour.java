@@ -2,9 +2,9 @@ package com.github.matveisergin.coloringbook.gamefield;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Locale;
 
 public class Colour extends JButton {
-
     private Color color;
     private int number;
     private String name = null;
@@ -19,7 +19,7 @@ public class Colour extends JButton {
         this.number = number;
         this.rgb = baseColour.getRgb();
         this.color = getColor();
-        this.name = baseColour.getName();
+        this.name = baseColour.name().toLowerCase();
         setBackground(color);
         setFont(new Font(NAME_FONT, Font.BOLD, FONT_SIZE));
     }

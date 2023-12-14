@@ -18,12 +18,6 @@ public abstract class Illustration {
         setPositionOfColors();
     }
 
-    private void setPositionOfColors() {
-        RequestToDatabase requestToDatabase = new RequestToDatabase();
-        Map<String, String> templates = requestToDatabase.getTemplatesForColoringBook();
-        positionOfColors = templates.get(name);
-    }
-
     public String getPositionOfColors() {
         return positionOfColors;
     }
@@ -38,5 +32,11 @@ public abstract class Illustration {
 
     public String getName() {
         return name;
+    }
+
+    private void setPositionOfColors() {
+        RequestToDatabase requestToDatabase = new RequestToDatabase();
+        Map<String, String> templates = requestToDatabase.getTemplatesForColoringBook();
+        positionOfColors = templates.get(name);
     }
 }

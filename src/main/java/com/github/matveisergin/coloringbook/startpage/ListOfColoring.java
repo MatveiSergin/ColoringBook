@@ -11,15 +11,15 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class ChoosingIllustrations extends JFrame {
+public class ListOfColoring extends JFrame {
     private static final int WIDTH2 = 350;
     private static final int HEIGHT2 = 50;
     private static final String FONT_COLOR_BLUE = "<html><h2><font color=\"blue\">";
     private static final String FINISH_THE_LAST_DRAWING = "Finish the last drawing";
     private static final String BACK = "<html><h2><font color=\"black\">Back";
     private static final int TWO = 2;
-    private static final String FILE_PATH = "C:\\workspace\\mai\\235\\23\\Kursach\\src\\main\\java\\com\\github\\matveisergin\\coloringbook\\media\\%s.jpg";
-    private static final String CHOOSING_ILLUSTRATION = "Choosing illustration";
+    private static final String FILE_PATH = "src/main/java/com/github/matveisergin/coloringbook/media/%s.jpg";
+    private static final String CHOOSING_ILLUSTRATION = "List of Coloring";
     private static final String CHOOSE_ILLUSTRATION = "Choose illustration";
     private static final int[] WINDOW_RESOLUTION = new int[]{350, 700};
     private static final int FONT_SIZE = 20;
@@ -27,20 +27,20 @@ public class ChoosingIllustrations extends JFrame {
     private static final int WIDTH1 = 350;
     private static final int HEIGHT1 = 100;
 
-    public ChoosingIllustrations() throws HeadlessException, IOException {
+    public ListOfColoring() throws IOException {
         super(CHOOSING_ILLUSTRATION);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(WINDOW_RESOLUTION[0], WINDOW_RESOLUTION[1]);
         setBackground(Color.white);
         setLocationRelativeTo(null);
-        FillChoosingIllustrations();
+        fillListOfColoring();
     }
 
     public void outputFrame() {
         setVisible(true);
     }
 
-    private void FillChoosingIllustrations() throws IOException {
+    private void fillListOfColoring() throws IOException {
         JLabel name = addNameOnChoosingIllustration();
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
@@ -49,8 +49,8 @@ public class ChoosingIllustrations extends JFrame {
         for (Illustrations illustration : possibleValues) {
             JPanel menuComponent = new JPanel(new GridLayout(1, 1));
 
-            JLabel pictures = addPictureOnChoosingIllustration(illustration);
-            JButton button = addButtonOnChoosingIllustration(illustration);
+            JLabel pictures = addPictureOnListOfColoring(illustration);
+            JButton button = addButtonOnListOfColoring(illustration);
 
             menuComponent.add(pictures);
             menuComponent.add(button);
@@ -79,7 +79,7 @@ public class ChoosingIllustrations extends JFrame {
         return name;
     }
 
-    private JLabel addPictureOnChoosingIllustration(Illustrations illustration) throws IOException {
+    private JLabel addPictureOnListOfColoring(Illustrations illustration) throws IOException {
         JLabel pictures = new JLabel(new ImageIcon(ImageIO.read(
                 new File(String.format(FILE_PATH, illustration.name())))));
         pictures.setOpaque(true);
@@ -87,7 +87,7 @@ public class ChoosingIllustrations extends JFrame {
         return pictures;
     }
 
-    private JButton addButtonOnChoosingIllustration(Illustrations illustration) {
+    private JButton addButtonOnListOfColoring(Illustrations illustration) {
         JButton button = new JButton(FONT_COLOR_BLUE + illustration.name());
         button.setBorderPainted(false);
         button.setCursor(Cursor.getPredefinedCursor(HAND_CURSOR));

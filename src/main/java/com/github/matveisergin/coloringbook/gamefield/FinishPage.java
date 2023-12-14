@@ -21,9 +21,7 @@ public class FinishPage extends JFrame {
         setSize(WINDOW_RESOLUTION[0], WINDOW_RESOLUTION[1]);
         setLocationRelativeTo(null);
         setBackground(Color.white);
-
         fillFinishPage(frameWithPicture);
-        outputFrame();
     }
 
     public void outputFrame() {

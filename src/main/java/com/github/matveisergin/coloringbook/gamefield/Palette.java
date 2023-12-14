@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 
 public class Palette extends JPanel {
+    private ArrayList<Colour> colours = new ArrayList<>(INITIAL_CAPACITY);
     private static final int INITIAL_CAPACITY = 9;
     private static final int ROWS = 3;
     private static final int COLS = 3;
     private static final int HGAP = 10;
     private static final int VGAP = 10;
-    private ArrayList<Colour> colours = new ArrayList<>(INITIAL_CAPACITY);
 
     public Palette() {
         super(new GridLayout(ROWS, COLS, HGAP, VGAP));

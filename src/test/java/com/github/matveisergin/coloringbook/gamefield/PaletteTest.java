@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 public class PaletteTest {
 
     private Palette palette;
+    private static final int NUM_TWO = 2;
     private static final int EXPECTED_SIZE = 2;
 
     @BeforeEach
@@ -26,7 +27,7 @@ public class PaletteTest {
     @Test
     void testAddColour() {
         Colour firstColour = new Colour(AllColours.BLACK, 1);
-        Colour secondColour = new Colour(AllColours.BLUE, 2);
+        Colour secondColour = new Colour(AllColours.BLUE, NUM_TWO);
 
         Assertions.assertTrue(palette.getColours().isEmpty());
 

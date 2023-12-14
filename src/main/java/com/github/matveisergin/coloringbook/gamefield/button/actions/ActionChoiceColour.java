@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ActionChoiceColour implements ActionListener {
-
     private Colour colour;
     private Palette palette;
     private JLabel infoLabel;

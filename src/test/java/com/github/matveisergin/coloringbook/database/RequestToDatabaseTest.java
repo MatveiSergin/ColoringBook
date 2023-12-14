@@ -48,9 +48,7 @@ public class RequestToDatabaseTest {
     @Test
     void testGetTemplatesForColoringBookMethod() {
         Map<String, String> testResult = testRequest.getTemplatesForColoringBook();
-
         Assertions.assertEquals(testResult.size(), EXPECTED_RESULT.size());
         Assertions.assertArrayEquals(testResult.values().toArray(), EXPECTED_RESULT.values().toArray());
     }
-
 }

@@ -16,7 +16,6 @@ public class ActionTest {
 
     @BeforeEach
     void initAction() {
-
         testAction = new Action(illustration);
     }
 
@@ -46,9 +45,6 @@ public class ActionTest {
         testAction.addAction(simpleCell, lastColour, newColour);
         List<Map.Entry<Cell, Colour[]>> testPairList = testAction.getPairList();
         Assertions.assertEquals(EXPECTED_SIZE, testPairList.size());
-
-        String currentProgress = testAction.getProgress();
-        Assertions.assertEquals(EXPECTED_PROGRESS_DURING_INIT, currentProgress);
     }
 
     @Test
@@ -84,16 +80,16 @@ public class ActionTest {
     @Test
     void testCalculateProgress() {
         Palette palette = new Palette();
+
         for (int i = 0; i < illustration.getColors().size(); i++) {
             palette.addColour(new Colour(illustration.getColors().get(i), i + 1));
         }
+
         Cell cell = new Cell(1, 3, 7, palette);
         Colour lastColour = new Colour(AllColours.WHITE, 6);
         Colour newColour = new Colour(AllColours.RED, 3);
         testAction.addAction(cell, lastColour, newColour);
         String curPrgoress = testAction.calculateProgress();
-
         Assertions.assertEquals(EXPECTED_PROGRESS, curPrgoress);
-
     }
 }

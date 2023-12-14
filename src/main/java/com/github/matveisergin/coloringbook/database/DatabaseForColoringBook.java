@@ -16,7 +16,7 @@ public class DatabaseForColoringBook {
             from Kursach.%s
             """;
     private static final String SQL_QUERY_TO_DELETE_EXECUTE = """
-                DELETE FROM Kursach.%s
+            DELETE FROM Kursach.%s
             WHERE id = (
                 SELECT id
                 FROM Kursach.%s
@@ -49,7 +49,6 @@ public class DatabaseForColoringBook {
             (2, 'Chicken', '111111111111111111111111111111111331111111111113551111111111115455111111511122555111115551113555511555551113555555555551111555555515511111555555515511111155155115111111155511155111111115555551111111111114111111111111114111111');
             """;
     private static final String COLUMN_NAME_FOR_COUNT_EXECUTE = "count";
-
     private static final String[] NAME_COLUMNS_FOR_COUNT = new String[]{"id", "TemplatesForColoringBook"};
     private static final String CANNOT_CONNECT_TO_DB = "Cannot connect to DB: ";
 

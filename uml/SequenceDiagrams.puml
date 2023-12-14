@@ -1,0 +1,62 @@
+@startuml
+actor       Actor
+Actor -> Rasckraska: запустить приложение
+Rasckraska -> Startpage **: создается фрейм с меню
+Startpage -> Startpage: создание кнопки "Start game"
+Startpage -> Startpage: создание кнопки "Exit"
+Startpage -> Rasckraska: возврат объекта
+Rasckraska -> Startpage: вывести на экран
+Startpage -> Actor: выводится на экран
+Actor -> Startpage: нажимает на "Start game"
+Startpage -> ListOfColoring **: создается фрейм со списком раскрасок
+ListOfColoring -> Illustrations: запрос названий раскрасок
+Illustrations -> ListOfColoring: названия раскрасок
+loop 2 times
+    ListOfColoring -> ListOfColoring: добавление кнопки и картинки нового холста
+end
+database    DatabaseForColoringBook
+ListOfColoring -> DatabaseForColoringBook: запрос в бд для получения последнего раскрашенного хоста
+DatabaseForColoringBook -> ListOfColoring: результаты запроса
+ListOfColoring -> ListOfColoring: добавление кнопки для рисунка из бд
+ListOfColoring -> Startpage: возврат объекта
+Startpage -> ListOfColoring: вывод на экран
+ListOfColoring -> Actor: выводиться на экран
+Actor -> ListOfColoring: нажимает на кнопку "Parrot"
+ListOfColoring -> GameField **: создается игровое поле
+GameField -> Parrot **: создание иллюстрации
+Parrot -> DatabaseForColoringBook: запрос шаблонов для раскрасок
+DatabaseForColoringBook -> Parrot: результат запроса
+Parrot -> GameField: возврат объекта
+GameField -> Action **: создается Action
+Action -> GameField: возврат объекта
+GameField -> Palette **: создание палитры
+Palette -> GameField: возврат объекта
+GameField -> Parrot: запрос цветов для палитры
+Parrot -> GameField: возврат цветов
+loop
+GameField -> Palette: добавление цветов в палитру
+end
+GameField -> Parrot: запрос цифр для ячеек
+Parrot -> GameField: возврат цифр для ячеек
+loop 225 times
+GameField -> Cell **: создание ячейки
+Cell -> GameField: возврат объекта
+GameField -> GameField: добавление ячейки на фрейм
+end
+GameField -> GameField: добавление кнопок дейтсвия для пользователей
+GameField -> ListOfColoring: возврат объекта
+ListOfColoring -> GameField: вывод на экран
+GameField -> Actor: вывод холста
+Actor -> GameField: нажимает на кнопку "Exit"
+GameField -> WindowsForSave **: создание окна сохранения
+WindowsForSave -> WindowsForSave: добавление кнопки для сохранения
+WindowsForSave -> WindowsForSave: добавление кнопки для выхода в меню
+WindowsForSave -> Actor: вывод на экран
+Actor -> WindowsForSave: нажимает на кнопку сохранения
+WindowsForSave -> Action: запрос на название раскраски и позиции закрашенных ячеек
+Action -> WindowsForSave: возврат результата
+WindowsForSave -> DatabaseForColoringBook: запрос на сохранение данных
+WindowsForSave -> Startpage: запуск фрейма
+Startpage -> Actor: вывод меню
+Actor -> Startpage: нажимает на кнопку Exit
+@enduml

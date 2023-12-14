@@ -10,6 +10,9 @@ public class ColourTest {
     private Colour colour1;
     private Colour colour2;
     private Colour colour3;
+    private static final String BLACK = "black";
+    private static final String WHITE = "white";
+    private static final String RED = "red";
 
     @BeforeEach
     void createColour() {
@@ -28,5 +31,22 @@ public class ColourTest {
 
         Color testColor3 = colour3.getColor();
         Assertions.assertEquals(Color.RED, testColor3);
+    }
+
+    @Test
+    void testSetSelected() {
+        Assertions.assertFalse(colour1.isSelected());
+        colour1.setSelected(true);
+        Assertions.assertTrue(colour1.isSelected());
+
+        colour2.setSelected(true);
+        colour2.setSelected(false);
+        Assertions.assertFalse(colour2.isSelected());
+    }
+
+    @Test void testGetName() {
+        Assertions.assertEquals(colour1.getName(), BLACK);
+        Assertions.assertEquals(colour2.getName(), WHITE);
+        Assertions.assertEquals(colour3.getName(), RED);
     }
 }

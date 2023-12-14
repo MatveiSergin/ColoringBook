@@ -1,6 +1,6 @@
 package com.github.matveisergin.coloringbook.startpage.button.actions;
 
-import com.github.matveisergin.coloringbook.startpage.ChoosingIllustrations;
+import com.github.matveisergin.coloringbook.startpage.ListOfColoring;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,7 +16,7 @@ public class ActionStartGame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         frame.dispose();
         try {
-            ChoosingIllustrations choosingIllustrations = new ChoosingIllustrations();
+            ListOfColoring choosingIllustrations = new ListOfColoring();
             choosingIllustrations.outputFrame();
         } catch (IOException ex) {
             throw new RuntimeException(ex);

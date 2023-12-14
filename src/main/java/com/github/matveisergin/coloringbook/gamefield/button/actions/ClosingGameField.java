@@ -21,6 +21,5 @@ public class ClosingGameField extends WindowAdapter {
         super.windowClosing(e);
         WindowForSave windowForSave = new WindowForSave(frameWithPictures, action);
         windowForSave.outputFrame();
-
     }
 }

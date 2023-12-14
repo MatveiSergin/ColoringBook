@@ -1,0 +1,249 @@
+@startuml
+
+top to bottom direction
+skinparam linetype ortho
+
+class Action {
+  + Action(Illustration): 
+  + Action(Illustration, String): 
+  + calculateProgress(): String
+  + getPositionOfColors(): String
+  + getProgress(): String
+  + getPairList(): List<Entry<Cell, Colour[]>>
+  + addAction(Cell, Colour, Colour): void
+  + getCurrentResult(): List<Integer>
+  + removeAllAction(): void
+  + getNameOfIllustration(): String
+  + removeLastAction(): void
+}
+class ActionBackToStartPage {
+  + ActionBackToStartPage(JFrame): 
+  + actionPerformed(ActionEvent): void
+}
+class ActionChoiceColour {
+  + ActionChoiceColour(Colour, Palette, JLabel): 
+  + actionPerformed(ActionEvent): void
+}
+class ActionClearField {
+  + ActionClearField(Action, JLabel): 
+  + actionPerformed(ActionEvent): void
+}
+class ActionColoringCell {
+  + ActionColoringCell(Cell, Palette, Action, JLabel, JFrame): 
+  + actionPerformed(ActionEvent): void
+}
+class ActionExit {
+  + ActionExit(): 
+  + actionPerformed(ActionEvent): void
+}
+class ActionExitToStartPage {
+  + ActionExitToStartPage(JFrame, Action): 
+  + actionPerformed(ActionEvent): void
+}
+class ActionForNewIllustration {
+  + ActionForNewIllustration(String, JFrame): 
+  + actionPerformed(ActionEvent): void
+}
+class ActionForNoSave {
+  + ActionForNoSave(JFrame, JFrame): 
+  + actionPerformed(ActionEvent): void
+}
+class ActionForOldIllustration {
+  + ActionForOldIllustration(String, String, JFrame): 
+  + actionPerformed(ActionEvent): void
+}
+class ActionForSave {
+  + ActionForSave(JFrame, JFrame, Action): 
+  + actionPerformed(ActionEvent): void
+}
+class ActionStartGame {
+  + ActionStartGame(JFrame): 
+  + actionPerformed(ActionEvent): void
+}
+
+class ActionUndo {
+  + ActionUndo(Action, JLabel): 
+  + actionPerformed(ActionEvent): void
+}
+enum AllColours << enumeration >> {
+  - AllColours(int[]): 
+  + values(): AllColours[]
+  + valueOf(String): AllColours
+  + getRgb(): int[]
+}
+class Cell {
+  + Cell(int, int, int, Palette): 
+  + getIndex(): int
+  + setColour(Colour): void
+  + getNumber(): int
+  + getColour(): Colour
+}
+class Chicken {
+  + Chicken(): 
+}
+class ClosingGameField {
+  + ClosingGameField(JFrame, Action): 
+  + windowClosing(WindowEvent): void
+}
+class Colour {
+  ~ Colour(AllColours, int): 
+  + setSelected(boolean): void
+  + getName(): String
+  + getColor(): Color
+  + isSelected(): boolean
+  + getNumber(): int
+}
+
+class DatabaseForColoringBook {
+  - DatabaseForColoringBook(): 
+  - init(): void
+  - connect(): Connection
+  - createSchema(): void
+  - createTableColoringBook(): void
+  - createTableTemplates(): void
+  - insertTemplates(): void
+  + executeDeleteLastTuple(String): void
+  + getInstance(): DatabaseForColoringBook
+  + execute(String): void
+  + selectAll(String, String[]): Map<Integer, String[]>
+  + executeCount(String, String): int
+}
+class DatabaseProperties {
+  + DatabaseProperties(): 
+  + getLogin(): String
+  + getPassword(): String
+  + getUrl(): String
+}
+class FinishPage {
+  + FinishPage(JFrame): 
+  - fillFinishPage(JFrame): void
+  + outputFrame(): void
+}
+class GameField {
+  + GameField(String): 
+  + GameField(String, String): 
+  - addActionsPanelOnGameField(): JPanel
+  - addPaletteOnGameField(): Palette
+  + outputFrame(): void
+  - addCellsOnGameField(Palette): JPanel
+  - chooseIllustration(String): void
+  - fillGameField(): void
+}
+class Illustration {
+  + Illustration(String, ArrayList<AllColours>, int): 
+  + getWidth(): int
+  + getPositionOfColors(): String
+  + getColors(): ArrayList<AllColours>
+  + getName(): String
+  - setPositionOfColors(): void
+}
+enum Illustrations << enumeration >> {
+  + Illustrations(): 
+  + values(): Illustrations[]
+  + valueOf(String): Illustrations
+}
+class ListOfColoring {
+  + ListOfColoring(): 
+  + outputFrame(): void
+  - addNameOnChoosingIllustration(): JLabel
+  - addUndoOnChoosingIllustration(): JButton
+  - FillListOfColoring(): void
+  - addPictureOnListOfColoring(Illustrations): JLabel
+  - addButtonFromDatabase(): JButton
+  - addButtonOnListOfColoring(Illustrations): JButton
+}
+class Palette {
+  + Palette(): 
+  + addColour(Colour): void
+  + getColours(): ArrayList<Colour>
+}
+
+class Parrot {
+  + Parrot(): 
+}
+class PropertiesFactory {
+  - PropertiesFactory(): 
+  + getProperties(): DatabaseProperties
+  - init(): void
+}
+class Rasckraska {
+  + Rasckraska(): 
+  + main(String[]): void
+}
+class RequestToDatabase {
+  + RequestToDatabase(): 
+  + getLastPictures(): String[]
+  + getTemplatesForColoringBook(): Map<String, String>
+  + savePictures(String, String): void
+}
+
+class Startpage {
+  + Startpage(): 
+  + outputFrame(): void
+  - fillStartPage(): void
+}
+class WindowForSave {
+  + WindowForSave(JFrame, Action): 
+  + fillWindowForSave(): void
+  + outputFrame(): void
+}
+
+Action                       -[#595959,dashed]->  Colour                      : "«create»"
+Action                      "1" *-[#595959,plain]-> "illustration\n1" Illustration                
+ActionBackToStartPage        -[#595959,dashed]->  Startpage                   : "«create»"
+ActionChoiceColour          "1" *-[#595959,plain]-> "colour\n1" Colour                      
+ActionChoiceColour          "1" *-[#595959,plain]-> "palette\n1" Palette                     
+ActionClearField            "1" *-[#595959,plain]-> "action\n1" Action                      
+ActionColoringCell          "1" *-[#595959,plain]-> "action\n1" Action                      
+ActionColoringCell          "1" *-[#595959,plain]-> "cell\n1" Cell                        
+ActionColoringCell           -[#595959,dashed]->  FinishPage                  : "«create»"
+ActionColoringCell          "1" *-[#595959,plain]-> "palette\n1" Palette                     
+ActionExitToStartPage       "1" *-[#595959,plain]-> "action\n1" Action                      
+ActionExitToStartPage        -[#595959,dashed]->  WindowForSave               : "«create»"
+ActionForNewIllustration     -[#595959,dashed]->  GameField                   : "«create»"
+ActionForNoSave              -[#595959,dashed]->  Startpage                   : "«create»"
+ActionForOldIllustration     -[#595959,dashed]->  GameField                   : "«create»"
+ActionForSave               "1" *-[#595959,plain]-> "action\n1" Action                      
+ActionForSave                -[#595959,dashed]->  RequestToDatabase           : "«create»"
+ActionForSave                -[#595959,dashed]->  Startpage                   : "«create»"
+ActionStartGame              -[#595959,dashed]->  ListOfColoring              : "«create»"
+ActionUndo                  "1" *-[#595959,plain]-> "action\n1" Action                      
+Cell                        "1" *-[#595959,plain]-> "colour\n1" Colour
+Chicken                      -[#000082,plain]-^  Illustration                
+ClosingGameField            "1" *-[#595959,plain]-> "action\n1" Action                      
+ClosingGameField             -[#595959,dashed]->  WindowForSave               : "«create»"
+DatabaseForColoringBook     "1" *-[#595959,plain]-> "properties\n1" DatabaseProperties
+FinishPage                   -[#595959,dashed]->  ActionExit                  : "«create»"
+FinishPage                   -[#595959,dashed]->  ActionForNoSave             : "«create»"
+GameField                   "1" *-[#595959,plain]-> "action\n1" Action                      
+GameField                    -[#595959,dashed]->  Action                      : "«create»"
+GameField                    -[#595959,dashed]->  ActionChoiceColour          : "«create»"
+GameField                    -[#595959,dashed]->  ActionClearField            : "«create»"
+GameField                    -[#595959,dashed]->  ActionColoringCell          : "«create»"
+GameField                    -[#595959,dashed]->  ActionExitToStartPage       : "«create»"
+GameField                    -[#595959,dashed]->  ActionUndo                  : "«create»"
+GameField                    -[#595959,dashed]->  Cell                        : "«create»"
+GameField                    -[#595959,dashed]->  Chicken                     : "«create»"
+GameField                    -[#595959,dashed]->  ClosingGameField            : "«create»"
+GameField                    -[#595959,dashed]->  Colour                      : "«create»"
+GameField                   "1" *-[#595959,plain]-> "illustration\n1" Illustration                
+GameField                    -[#595959,dashed]->  Palette                     : "«create»"
+GameField                    -[#595959,dashed]->  Parrot                      : "«create»"
+Illustration                "1" *-[#595959,plain]-> "colors\n*" AllColours                  
+Illustration                 -[#595959,dashed]->  RequestToDatabase           : "«create»"
+ListOfColoring               -[#595959,dashed]->  ActionBackToStartPage       : "«create»"
+ListOfColoring               -[#595959,dashed]->  ActionForNewIllustration    : "«create»"
+ListOfColoring               -[#595959,dashed]->  ActionForOldIllustration    : "«create»"
+ListOfColoring               -[#595959,dashed]->  RequestToDatabase           : "«create»"
+Palette                     "1" *-[#595959,plain]-> "colours\n*" Colour                      
+Parrot                       -[#000082,plain]-^  Illustration                
+PropertiesFactory           "1" *-[#595959,plain]-> "properties\n1" DatabaseProperties          
+PropertiesFactory            -[#595959,dashed]->  DatabaseProperties          : "«create»"
+Rasckraska                   -[#595959,dashed]->  Startpage                   : "«create»"
+RequestToDatabase           "1" *-[#595959,plain]-> "database\n1" DatabaseForColoringBook
+Startpage                    -[#595959,dashed]->  ActionExit                  : "«create»"
+Startpage                    -[#595959,dashed]->  ActionStartGame             : "«create»"
+WindowForSave               "1" *-[#595959,plain]-> "action\n1" Action                      
+WindowForSave                -[#595959,dashed]->  ActionForNoSave             : "«create»"
+WindowForSave                -[#595959,dashed]->  ActionForSave               : "«create»"
+@enduml

@@ -29,7 +29,7 @@ public class WindowForSave extends JFrame {
         setVisible(true);
     }
 
-    public void fillWindowForSave() {
+    private void fillWindowForSave() {
         JPanel panel = new JPanel(new FlowLayout());
         JLabel information = new JLabel(SAVE_A_PICTURE);
         JButton buttonForSave = new JButton(SAVE);

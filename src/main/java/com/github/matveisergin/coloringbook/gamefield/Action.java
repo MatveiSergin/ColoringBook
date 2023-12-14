@@ -8,10 +8,10 @@ public class Action {
     private Illustration illustration;
     private int quantityWhiteCells;
     private String progress;
-    private static final char ONES = '1';
+    private static final char NUMBER_FOR_WHITE_COLOR = '1';
     private static final String FORMAT_FOR_PROGRESS = "%.1f";
     private static final String EMPTY_STRING = "";
-    private static final int FIRST_NUMBER_FOR_FORMULA = 100;
+    private static final int ONE_HUNDRED = 100;
 
     public Action(Illustration illustration) {
         this.illustration = illustration;
@@ -22,12 +22,11 @@ public class Action {
         String positionOfColors = illustration.getPositionOfColors();
 
         for (int i = 0; i < positionOfColors.length(); i++) {
-            if (positionOfColors.charAt(i) == ONES) {
+            if (positionOfColors.charAt(i) == NUMBER_FOR_WHITE_COLOR) {
                 counter += 1;
             }
         }
         this.quantityWhiteCells = counter;
-
         this.progress = calculateProgress();
     }
 
@@ -39,13 +38,37 @@ public class Action {
         int counter = 0;
 
         for (int i = 0; i < illustration.getPositionOfColors().length(); i++) {
-            if (illustration.getPositionOfColors().charAt(i) == ONES) {
+            if (illustration.getPositionOfColors().charAt(i) == NUMBER_FOR_WHITE_COLOR) {
                 counter += 1;
             }
         }
         this.quantityWhiteCells = counter;
-
         this.progress = calculateProgress();
+    }
+
+    public String calculateProgress() {
+        int counter = 0;
+        String endResult = illustration.getPositionOfColors();
+
+        for (int i = 0; i < currentResult.size(); i++) {
+            if (currentResult.get(i) == Integer.parseInt(String.valueOf(endResult.charAt(i))) && currentResult.get(i) != 1) {
+                counter += 1;
+            }
+        }
+
+        float result = (float) counter * ONE_HUNDRED / (
+                illustration.getWidth() * illustration.getWidth() - quantityWhiteCells
+        );
+        return String.format(FORMAT_FOR_PROGRESS, result);
+    }
+
+    public String getPositionOfColors() {
+        String result = EMPTY_STRING;
+        for (int numberColors :
+                currentResult) {
+            result += Integer.toString(numberColors);
+        }
+        return result;
     }
 
     public void addAction(Cell cell, Colour last_colour, Colour new_colour) {
@@ -80,31 +103,6 @@ public class Action {
         }
         pairList.clear();
         progress = calculateProgress();
-    }
-
-    public String calculateProgress() {
-        int counter = 0;
-        String endResult = illustration.getPositionOfColors();
-
-        for (int i = 0; i < currentResult.size(); i++) {
-            if (currentResult.get(i) == Integer.parseInt(String.valueOf(endResult.charAt(i))) && currentResult.get(i) != 1) {
-                counter += 1;
-            }
-        }
-
-        float result = (float) counter * FIRST_NUMBER_FOR_FORMULA / (
-                illustration.getWidth() * illustration.getWidth() - quantityWhiteCells
-        );
-        return String.format(FORMAT_FOR_PROGRESS, result);
-    }
-
-    public String getPositionOfColors() {
-        String result = EMPTY_STRING;
-        for (int numberColors :
-                currentResult) {
-            result += Integer.toString(numberColors);
-        }
-        return result;
     }
 
     public String getProgress() {
