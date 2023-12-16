@@ -17,7 +17,7 @@ public class RequestToDatabase {
             """;
     private static final String SQL_QUERY_FOR_GET_TEMPLATES = """
             select *
-            from TemplatesForColoringBook
+            from Kursach.TemplatesForColoringBook
             """;
     private static final String FIRST_COLUMN_FOR_COLORINGBOOK = "id";
     private static final String SECOND_COLUMN_FOR_COLORINGBOOK = "illustration";
