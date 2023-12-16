@@ -18,7 +18,7 @@ public class ListOfColoring extends JFrame {
     private static final String FINISH_THE_LAST_DRAWING = "Finish the last drawing";
     private static final String BACK = "<html><h2><font color=\"black\">Back";
     private static final int TWO = 2;
-    private static final String FILE_PATH = "src/main/java/com/github/matveisergin/coloringbook/media/%s.jpg";
+    private static final String FILE_PATH = "%s.jpg";
     private static final String CHOOSING_ILLUSTRATION = "List of Coloring";
     private static final String CHOOSE_ILLUSTRATION = "Choose illustration";
     private static final int[] WINDOW_RESOLUTION = new int[]{350, 700};
@@ -81,7 +81,7 @@ public class ListOfColoring extends JFrame {
 
     private JLabel addPictureOnListOfColoring(Illustrations illustration) throws IOException {
         JLabel pictures = new JLabel(new ImageIcon(ImageIO.read(
-                new File(String.format(FILE_PATH, illustration.name())))));
+                new File(Thread.currentThread().getContextClassLoader().getResource(String.format(FILE_PATH, illustration.name())).getPath()))));
         pictures.setOpaque(true);
         pictures.setBackground(Color.WHITE);
         return pictures;

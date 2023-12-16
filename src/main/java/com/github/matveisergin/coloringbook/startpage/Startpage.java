@@ -12,7 +12,7 @@ import java.io.IOException;
 public class Startpage extends JFrame {
 
     private static final String MENU = "Menu";
-    private static final String FILE_PATH_TO_PICTURE_WITH_PALETTE = "C:\\workspace\\mai\\235\\23\\Kursach\\src\\main\\java\\com\\github\\matveisergin\\coloringbook\\media\\pallete.png";
+    private static final String FILE_PATH_TO_PICTURE_WITH_PALETTE = "pallete.png";
     private static final String WELCOME = "Welcome to the Coloring book!!";
     private static final int WIDTH1 = 350;
     private static final int HEIGHT1 = 100;
@@ -39,7 +39,7 @@ public class Startpage extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
-        JLabel background = new JLabel(new ImageIcon(ImageIO.read(new File(FILE_PATH_TO_PICTURE_WITH_PALETTE))));
+        JLabel background = new JLabel(new ImageIcon(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource(FILE_PATH_TO_PICTURE_WITH_PALETTE).getPath()))));
         background.setOpaque(true);
         background.setBackground(Color.WHITE);
 

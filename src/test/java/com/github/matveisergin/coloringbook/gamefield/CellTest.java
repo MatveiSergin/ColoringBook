@@ -12,7 +12,7 @@ public class CellTest {
     private Palette palette = new Palette();
     private static final int EXPECTED_INDEX = 7;
     private static final int EXPECTED_NUMBER = 3;
-    private static final String EXPECTED_NAME_FOR_COLOUR = "White";
+    private static final String EXPECTED_NAME_FOR_COLOUR = "white";
     private static final Color EXPECTED_COLOR = Color.red;
 
     @BeforeEach
